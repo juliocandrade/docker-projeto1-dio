@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  apache:
+    image: httpd:latest
+    container_name: apache_srv
+    restart: unless-stopped
+    networks:
+      - minha-rede
+    ports:
+      - '80:80'
+    volumes:
+      - ./website:/usr/local/apache2/htdocs
+
+networks:
+  minha-rede:
+    driver: bridge
+
